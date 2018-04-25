@@ -1,7 +1,7 @@
 {
   "name": "nodeircbot-2",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/bot.js",
   "author": "Joni Hiltunen",
   "license": "MIT",
   "private": true,
@@ -24,10 +24,9 @@
     "jest": "^22.4.3"
   },
   "scripts": {
-    "build": "babel src/ -d lib/",
-    "prepublish": "yarn run build",
+    "build": "babel src/ -d dist/",
     "test": "jest",
-    "start": "node src/bot.js"
+    "start": "node dist/bot.js"
   },
   "jest": {
     "verbose": true,
