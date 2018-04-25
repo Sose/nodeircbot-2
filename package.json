@@ -1,0 +1,36 @@
+{
+  "name": "nodeircbot-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Joni Hiltunen",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "he": "^1.1.1",
+    "irc-framework": "^2.11.0",
+    "node-fetch": "^2.1.2",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-airbnb-flow": "^1.0.2",
+    "eslint-plugin-import": "^2.11.0",
+    "flow-bin": "^0.70.0",
+    "jest": "^22.4.3"
+  },
+  "scripts": {
+    "build": "babel src/ -d lib/",
+    "prepublish": "yarn run build",
+    "test": "jest",
+    "start": "node src/bot.js"
+  },
+  "jest": {
+    "verbose": true,
+    "rootDir": "src"
+  }
+}
