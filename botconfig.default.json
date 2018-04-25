@@ -18,5 +18,24 @@
   ],
   "log": {
     "severity": -1000
+  },
+  "plugins": {
+    "weather": {
+      "apikey": "06c50ffe970c6fb4ae8abcdf4c5709d6",
+      "defaultLocation": "Oulu"
+    },
+    "youtube": {
+      "apikey": "AIzaSyDdseY410t05krbw2tLv0tGUgUuaMlj5a0",
+      "bannedUppers": [
+          "Sita Salminen",
+          "ASMR Sita Sofia",
+          "mansikkka",
+          "ILONA",
+          "Deata"
+      ]
+    },
+    "wolframalpha": {
+      "apikey": "2A9JXV-W998PLKX8R"
+    }
   }
 }

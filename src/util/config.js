@@ -15,6 +15,7 @@ function loadConfig(filename: ?string = 'botconfig.default.json'): Config {
 }
 
 function getConfig(): Config {
+  if (config == null) config = loadConfig();
   return config;
 }
 

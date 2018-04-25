@@ -1,9 +1,9 @@
 /* @flow */
 
 const fetch = require('node-fetch');
+const config = require('../util/config').getConfig();
 
-// TODO: read from config file?
-const apikey = '06c50ffe970c6fb4ae8abcdf4c5709d6';
+const { apikey, defaultLocation } = config.plugins.weather;
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 type WeatherData = Object;
@@ -65,7 +65,7 @@ async function handleMessage(msg: string): Replies {
   const matches = regex.exec(msg);
 
   if (matches) {
-    const query = matches[1] ? matches[1] : 'Oulu';
+    const query = matches[1] ? matches[1] : defaultLocation;
     const weather = await weatherData(query);
     const answerStr : string = answer(weather);
     return [answerStr];

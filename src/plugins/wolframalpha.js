@@ -1,7 +1,9 @@
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const appId = '2A9JXV-W998PLKX8R';
+const config = require('../util/config').getConfig();
+
+const appId = config.plugins.wolframalpha.apikey;
 const URI = 'http://api.wolframalpha.com/v2/query';
 
 const log = require('../util/logging').log;

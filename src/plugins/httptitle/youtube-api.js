@@ -1,10 +1,12 @@
 /* @flow */
 const fetch = require('node-fetch');
 
-const myAPIKey = 'AIzaSyDdseY410t05krbw2tLv0tGUgUuaMlj5a0';
+const config = require('../../util/config').getConfig();
+
+const { apikey, bannedUppers } = config.plugins.youtube;
 const APIURL = 'https://www.googleapis.com/youtube/v3';
 
-const params = (id, parts) => `id=${id}&part=${parts}&key=${myAPIKey}`;
+const params = (id, parts) => `id=${id}&part=${parts}&key=${apikey}`;
 const fetchUrl = videoId => `${APIURL}/videos?${params(videoId, 'snippet')}`;
 
 const { log } = require('../../util/logging');
@@ -23,14 +25,6 @@ function getYoutubeId(url: string): ?string {
 }
 
 function antiNobot({ uploader }): boolean {
-  const bannedUppers = [
-    /Sita Salminen/gi,
-    /ASMR Sita Sofia/gi,
-    /mansikkka/gi,
-    /ILONA/gi,
-    /Deata/gi,
-  ];
-
   for (const buster of bannedUppers) {
     if (uploader.match(buster)) {
       return true;
