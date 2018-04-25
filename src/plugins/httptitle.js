@@ -95,7 +95,11 @@ async function handleDefault(url) {
   const page = fetch(url).then(x => x.text());
   const $ = page.then(res => cheerio.load(res));
   const titleObj = await $.then(findTitle);
-  return { text: `title: ${titleObj.title}` };
+  if (titleObj.title && titleObj.title.trim() !== '') {
+    return { text: `title: ${titleObj.title}` };
+  }
+
+  return { text: null };
 }
 
 const cases = [
@@ -141,7 +145,9 @@ async function handleMessage(msg, replyFn) {
     // call the reply callback for each answer string
     for (const ans of answers) {
       const x = await ans;
-      replyFn(x);
+      if (x && x.trim() !== '') {
+        replyFn(x);
+      }
     }
   }
 }

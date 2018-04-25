@@ -35,7 +35,7 @@ async function handleMessage(msg, replyFn) {
   const matches = regex.exec(msg);
   if (matches && matches[1]) {
     const res = await answer(matches[1]);
-    replyFn(res[0]);
+    replyFn(res);
   }
 }
 

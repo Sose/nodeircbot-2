@@ -54,7 +54,7 @@ bot.on('message', (event) => {
   const { message, reply } = event;
 
   // TODO
-  log(`timestamp? ${message}`, 0);
+  log(`msg: ${message}`, 0);
 
   for (const plugin of plugins) {
     plugin.handle(message, reply);
