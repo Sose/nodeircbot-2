@@ -6,11 +6,11 @@ const URI = 'http://api.wolframalpha.com/v2/query';
 
 const log = require('../util/logging').log;
 
-function buildURI(question) {
+function buildURI(question: string): string {
   return `${URI}?input=${question}&appid=${appId}`;
 }
 
-function answer(question) {
+function answer(question: string): Promise<string> {
   const url = buildURI(question);
 
   const xmlString = fetch(url).then(res => res.text());
@@ -25,7 +25,7 @@ function answer(question) {
   });
 
   // TODO: ummm
-  return fullResponse.then(x => x.queryresult.pod[1].subpod[0].plaintext).catch((err) => {
+  return fullResponse.then(x => x.queryresult.pod[1].subpod[0].plaintext[0]).catch((err) => {
     log(`Error in wolframalpha.js: ${err}`);
   });
 }
@@ -34,11 +34,10 @@ function answer(question) {
 async function handleMessage(msg:string): Replies {
   const regex = /^!wa (.*)$/gi;
   const matches = regex.exec(msg);
-  if (matches && matches[1]) {
-    const res = await answer(matches[1]);
-    if (res && res[0]) {
-      return [res[0]];
-    }
+  const question : string = matches[1];
+  if (matches && question) {
+    const res : string = await answer(question);
+    return [res];
   }
 
   return [];

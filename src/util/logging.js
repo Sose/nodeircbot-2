@@ -1,5 +1,6 @@
+/* @flow */
 
-const log = (msg, severity = 0) => {
+const log = (msg: string, severity:number = 0): void => {
   // eslint-disable-next-line no-console
   console.log(`${severity}: ${msg}`);
 };

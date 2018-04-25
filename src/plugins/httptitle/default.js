@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 
 const { cleanString } = require('../../util/misc');
 
-function findTitle($) {
+function findTitle($): Object {
   let title = $('head > title').text();
   title = cleanString(title);
 

@@ -16,10 +16,10 @@ function twitchTitle($): string {
   return title;
 }
 
-async function handleTwitch(url: string): Promise<TitleInfo> {
+async function handleTwitch(url: string): Promise<?TitleInfo> {
   const page = fetch(url).then(x => x.text());
   const $ = page.then(res => cheerio.load(res));
-  const text = await $.then(twitchTitle);
+  const text : string = await $.then(twitchTitle);
   return { text, nobotOverride: false };
 }
 

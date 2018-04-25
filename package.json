@@ -29,7 +29,7 @@
     "start": "node dist/bot.js"
   },
   "jest": {
-    "verbose": true,
+    "verbose": false,
     "rootDir": "src"
   }
 }
