@@ -24,9 +24,10 @@
     "jest": "^22.4.3"
   },
   "scripts": {
-    "build": "babel src/ -d dist/",
     "test": "jest",
-    "start": "node dist/bot.js"
+    "build": "babel src/ -d dist/",
+    "start": "node dist/bot.js",
+    "go": "babel-node src/bot.js"
   },
   "jest": {
     "verbose": false,
