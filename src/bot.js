@@ -1,30 +1,8 @@
 /* @flow */
 
-// TODO: move to options file?
-const options = {
-  channels: [
-    '#dota.hamachi',
-    '#sosetest',
-  ],
+const config = require('./util/config');
 
-  serverOptions: {
-    host: 'se.quakenet.org',
-    port: 6667,
-    nick: 'nobot',
-    username: 'sobot is nobot',
-    version: 'sobot',
-    encoding: 'utf8',
-    auto_reconnect: true,
-    auto_reconnect_wait: 6000,
-    auto_reconnect_max_retries: 100,
-    ping_interval: 30,
-    ping_timeout: 120,
-  },
-
-  log: {
-    severity: -1000,
-  },
-};
+const options = config.loadConfig('botconfig.default.json');
 
 const IRC = require('irc-framework');
 
@@ -60,7 +38,7 @@ bot.on('message', (event) => {
       for (const line of replies) {
         if (line) reply(line);
       }
-    }).catch(() => log);
+    }).catch(x => log(x));
   }
 });
 

@@ -1,1 +1,22 @@
-{}
+{
+  "serverOptions": {
+    "host": "se.quakenet.org",
+    "port": 6667,
+    "nick": "nobot",
+    "username": "sobot is nobot",
+    "version": "sobot",
+    "encoding": "utf8",
+    "auto_reconnect": true,
+    "auto_reconnect_wait": 6000,
+    "auto_reconnect_max_retries": 100,
+    "ping_interval": 30,
+    "ping_timeout": 120
+  },
+  "channels": [
+    "#dota.hamachi",
+    "#sosetest"
+  ],
+  "log": {
+    "severity": -1000
+  }
+}

@@ -1,24 +1,30 @@
+/* @flow */
+
 const fs = require('fs');
-const path = require('path');
+// const path = require('path');
 
-const currentConfig = {
+type Config = Object
 
-};
+let config;
 
-// @flow
-function loadFile(filename: string) {
-  console.log(filename);
+function loadConfig(filename: ?string = 'botconfig.default.json'): Config {
+  const contents : string = fs.readFileSync(filename);
+  config = JSON.parse(contents);
+  Object.freeze(config);
+  return config;
 }
 
-function load() {
-  loadFile('default.txt');
-}
-
-function get(key) {
-  return currentConfig[key] ? currentConfig[key] : undefined;
+function getConfig(): Config {
+  return config;
 }
 
 module.exports = {
-  load,
-  get,
+  loadConfig, getConfig,
 };
+
+// load defaults
+// load custom config if present
+// replace defaults with custom values if found
+// store config and somehow able to retrieve values from it?
+// singleton pattern?
+
