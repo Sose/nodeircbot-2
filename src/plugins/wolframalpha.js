@@ -30,13 +30,18 @@ function answer(question) {
   });
 }
 
-async function handleMessage(msg, replyFn) {
+// @flow
+async function handleMessage(msg:string): Replies {
   const regex = /^!wa (.*)$/gi;
   const matches = regex.exec(msg);
   if (matches && matches[1]) {
     const res = await answer(matches[1]);
-    replyFn(res);
+    if (res && res[0]) {
+      return [res[0]];
+    }
   }
+
+  return [];
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 // TODO: move to options file?
 const options = {
@@ -33,16 +33,15 @@ const bot = new IRC.Client();
 const log = require('./util/logging').log;
 
 // TODO: separate file?
-const weatherPlugin = require('./plugins/weather');
-const titlePlugin = require('./plugins/httptitle');
-const waPlugin = require('./plugins/wolframalpha');
+const weatherPlugin : Plugin = require('./plugins/weather');
+const titlePlugin : Plugin = require('./plugins/httptitle/httptitle');
+const waPlugin : Plugin = require('./plugins/wolframalpha');
 
-const plugins = [
+const plugins : Array<Plugin> = [
   weatherPlugin,
   titlePlugin,
   waPlugin,
 ];
-
 
 bot.on('registered', (event) => {
   log(`Registered with nick ${event.nick}.`);
@@ -57,7 +56,11 @@ bot.on('message', (event) => {
   log(`msg: ${message}`, 0);
 
   for (const plugin of plugins) {
-    plugin.handle(message, reply);
+    plugin.handle(message).then((replies: Array<string>) => {
+      for (const line of replies) {
+        if (line) reply(line);
+      }
+    }).catch(() => log);
   }
 });
 

@@ -1,13 +1,17 @@
+/* @flow */
+
 const fetch = require('node-fetch');
 
 // TODO: read from config file?
 const apikey = '06c50ffe970c6fb4ae8abcdf4c5709d6';
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 
-function weatherData(query) {
-  const url = `${baseURL}?q=${query}&units=metric&lang=fi&APPID=${apikey}`;
+type WeatherData = Object;
 
-  const weather = fetch(url).then(res => res.json()).catch(err => err);
+function weatherData(query: string): Promise<WeatherData> {
+  const url : string = `${baseURL}?q=${query}&units=metric&lang=fi&APPID=${apikey}`;
+
+  const weather : Promise<WeatherData> = fetch(url).then(res => res.json()).catch(err => err);
   return weather;
 }
 
@@ -36,7 +40,8 @@ function weatherData(query) {
   name: 'Oulu',
   cod: 200 }
 */
-function answer(weather) {
+
+function answer(weather: Object): string {
   const city = weather.name;
   const countrycode = weather.sys.country;
   const description = weather.weather[0].description;
@@ -55,16 +60,18 @@ function answer(weather) {
   return resultString;
 }
 
-async function handleMessage(msg, replyFn) {
+async function handleMessage(msg: string): Replies {
   const regex = /(?:!sää|!weather)[ ]?(.*)/gi;
   const matches = regex.exec(msg);
 
   if (matches) {
     const query = matches[1] ? matches[1] : 'Oulu';
     const weather = await weatherData(query);
-    const answerStr = answer(weather);
-    replyFn(answerStr);
+    const answerStr : string = answer(weather);
+    return [answerStr];
   }
+
+  return [];
 }
 
 /*

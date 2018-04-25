@@ -1,3 +1,5 @@
+/* @flow */
+
 const ht = require('../httptitle');
 
 /*
@@ -10,25 +12,23 @@ test('It works for youtube titles', () => {
 });
 */
 
-test('It stays silent with no urls', (done) => {
-  ht.handle('asldkasd http:// apsdkaposk do google.com', () => {
+test('It returns undefined with no urls', (done) => {
+  ht.handle('asldkasd http:// apsdkaposk do google.com').then((x) => {
     // TODO: how to ensure the callback never gets called?
-    expect(1).toEqual(2);
-    done();
+    expect(x).toEqual([]);
   });
+  done();
 });
 
 test('It works for random urls', (done) => {
-  const urls = [
-    { url: 'http://google.fi', correctAnswer: 'title: Google' },
-    { url: 'http://www.yle.fi', correctAnswer: 'title: Yle.fi - oivalla jotain uutta' },
+  const correct = [
+    'title: Google',
+    'title: Yle.fi - oivalla jotain uutta',
   ];
 
-  let counter = 0;
   const msg = 'http://google.fi yee http://www.yle.fi';
-  ht.handle(msg, (x) => {
-    expect(x).toEqual(urls[counter].correctAnswer);
-    counter += 1;
-    if (counter === 2) done();
+  ht.handle(msg).then((x) => {
+    expect(x).toEqual(correct);
+    done();
   });
 });
