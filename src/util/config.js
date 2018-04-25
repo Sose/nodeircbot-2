@@ -3,19 +3,22 @@
 const fs = require('fs');
 // const path = require('path');
 
+const log = require('./logging').log;
+
 type Config = Object
 
 let config;
 
-function loadConfig(filename: ?string = 'botconfig.default.json'): Config {
-  const contents : string = fs.readFileSync(filename);
+function loadConfig(filename: string = 'botconfig.default.json'): Config {
+  log(`Reading log file: ${filename}`);
+  const contents = String(fs.readFileSync(filename));
   config = JSON.parse(contents);
   Object.freeze(config);
   return config;
 }
 
 function getConfig(): Config {
-  if (config == null) config = loadConfig();
+  if (config == null) loadConfig();
   return config;
 }
 
