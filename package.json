@@ -26,7 +26,7 @@
   "scripts": {
     "test": "jest",
     "build": "babel src/ -d dist/",
-    "start": "node dist/bot.js",
+    "start": "node ./dist/bot.js",
     "go": "babel-node src/bot.js"
   },
   "jest": {

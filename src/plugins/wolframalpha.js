@@ -3,7 +3,7 @@ const xml2js = require('xml2js');
 
 const config = require('../util/config').getConfig();
 
-const appId = config.plugins.wolframalpha.apikey;
+const appId : string = config.plugins.wolframalpha.apikey;
 const URI = 'http://api.wolframalpha.com/v2/query';
 
 const log = require('../util/logging').log;
