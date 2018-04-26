@@ -2,7 +2,7 @@
 
 const config = require('./util/config');
 
-const options = config.loadConfig('botconfig.default.json');
+const options = config.loadConfig('botconfig.json');
 
 const IRC = require('irc-framework');
 

@@ -29,6 +29,12 @@ OR
 yarn install
 ```
 
+Copy the default configuration file to `botconfig.json` and edit it
+
+```
+cp botconfig.default.json botconfig.json
+```
+
 Transpile with babel and start the bot
 
 ```
@@ -46,33 +52,13 @@ Run the tests with
 yarn test
 ```
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-??
-
 ## Built With
 
 * [Flow](https://flow.org/) - Static type checker
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
 ## Acknowledgments
 

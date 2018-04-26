@@ -3,3 +3,4 @@ dist/
 flow-typed/
 package-lock.json
 yarn.lock
+botconfig.json

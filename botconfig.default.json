@@ -1,8 +1,8 @@
 {
   "serverOptions": {
-    "host": "se.quakenet.org",
+    "host": "some.irc.server",
     "port": 6667,
-    "nick": "nobot",
+    "nick": "nobotnobot",
     "username": "sobot is nobot",
     "version": "sobot",
     "encoding": "utf8",
@@ -13,29 +13,25 @@
     "ping_timeout": 120
   },
   "channels": [
-    "#dota.hamachi",
-    "#sosetest"
+    "#channelstojoin"
   ],
   "log": {
     "severity": -1000
   },
   "plugins": {
     "weather": {
-      "apikey": "06c50ffe970c6fb4ae8abcdf4c5709d6",
+      "apikey": "fill in",
       "defaultLocation": "Oulu"
     },
     "youtube": {
-      "apikey": "AIzaSyDdseY410t05krbw2tLv0tGUgUuaMlj5a0",
+      "apikey": "fill in",
       "bannedUppers": [
-          "Sita Salminen",
-          "ASMR Sita Sofia",
-          "mansikkka",
-          "ILONA",
-          "Deata"
+        "list of strings of uploaders",
+        "who can't avoid the wrath of nobot"
       ]
     },
     "wolframalpha": {
-      "apikey": "2A9JXV-W998PLKX8R"
+      "apikey": "fill in"
     }
   }
 }

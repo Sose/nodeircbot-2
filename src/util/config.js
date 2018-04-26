@@ -9,7 +9,7 @@ type Config = Object
 
 let config;
 
-function loadConfig(filename: string = 'botconfig.default.json'): Config {
+function loadConfig(filename: string = 'botconfig.json'): Config {
   log(`Reading log file: ${filename}`);
   const contents = String(fs.readFileSync(filename));
   config = JSON.parse(contents);
