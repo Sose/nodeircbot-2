@@ -31,7 +31,7 @@
     "go": "babel-node src/bot.js"
   },
   "jest": {
-    "verbose": false,
+    "verbose": true,
     "rootDir": "src"
   }
 }
