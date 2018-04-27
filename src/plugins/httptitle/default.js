@@ -22,7 +22,7 @@ function findTitle($): Object {
 }
 
 async function handleDefault(url: string): Promise<?TitleInfo> {
-  const page = fetch(url).then(x => x.text());
+  const page = fetch(url).then(x => x.textConverted());
   const $ = page.then(res => cheerio.load(res));
   const titleObj = await $.then(findTitle);
   if (titleObj.title && titleObj.title.trim() !== '') {

@@ -32,3 +32,13 @@ test('It works for random urls', (done) => {
     done();
   });
 });
+
+test('Iltalehti works xD', (done) => {
+  const msg = 'http://www.iltalehti.fi/ulkomaat/201804272200907446_ul.shtml';
+  const correct = ['title: Merkel tapaa tänään Trumpin: Saksalaismedia ihmettelee lyhyttä tapaamista'];
+
+  ht.handle(msg).then(((x) => {
+    expect(x).toEqual(correct);
+    done();
+  }));
+});
