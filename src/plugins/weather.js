@@ -9,9 +9,9 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 type WeatherData = Object;
 
 function weatherData(query: string): Promise<WeatherData> {
-  const url : string = `${baseURL}?q=${query}&units=metric&lang=fi&APPID=${apikey}`;
+  const url: string = `${baseURL}?q=${query}&units=metric&lang=fi&APPID=${apikey}`;
 
-  const weather : Promise<WeatherData> = fetch(url).then(res => res.json()).catch(err => err);
+  const weather: Promise<WeatherData> = fetch(url).then(res => res.json()).catch(err => err);
   return weather;
 }
 
@@ -67,7 +67,7 @@ async function handleMessage(msg: string): Replies {
   if (matches) {
     const query = matches[1] ? matches[1] : defaultLocation;
     const weather = await weatherData(query);
-    const answerStr : string = answer(weather);
+    const answerStr: string = answer(weather);
     return [answerStr];
   }
 

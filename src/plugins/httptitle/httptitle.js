@@ -14,7 +14,7 @@ type UrlHandler = {
   handle: (url: string) => Promise<?TitleInfo>
 }
 
-const cases : Array<UrlHandler> = [
+const cases: Array<UrlHandler> = [
   {
     name: 'youtube',
     regex: /(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/g,
@@ -36,7 +36,7 @@ async function handleUrl(url: string, hasNobot: boolean): Promise<?string> {
   for (const c of cases) {
     c.regex.lastIndex = 0; // need to reset this because we are reusing the regex object
     if (c.regex.test(url)) {
-      const answer : ?TitleInfo = await c.handle(url);
+      const answer: ?TitleInfo = await c.handle(url);
       if (answer && !(hasNobot && !answer.nobotOverride)) {
         return answer.text;
       }
@@ -53,7 +53,7 @@ async function handleMessage(msg: string): Replies {
     const msgHasNobot = !!msg.match(/n[o'][b'][o']t/i);
     const answers = urls.map(url => handleUrl(url, msgHasNobot));
 
-    const results : Array<string> = [];
+    const results: Array<string> = [];
 
     // call the reply callback for each answer string
     for (const ans of answers) {

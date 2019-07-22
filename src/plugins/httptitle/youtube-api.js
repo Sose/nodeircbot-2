@@ -35,7 +35,7 @@ function antiNobot({ uploader }): boolean {
 }
 
 async function youtubeTitle(videoId: string): Promise<?YoutubeResponse> {
-  const response : Object = await fetch(fetchUrl(videoId)).then(res => res.json());
+  const response: Object = await fetch(fetchUrl(videoId)).then(res => res.json());
 
   if (response) {
     const info = response.items[0];
@@ -53,10 +53,10 @@ async function youtubeTitle(videoId: string): Promise<?YoutubeResponse> {
 }
 
 async function handleYoutube(url: string): Promise<?TitleInfo> {
-  const id : ?string = getYoutubeId(url);
+  const id: ?string = getYoutubeId(url);
   if (!id) return undefined;
 
-  const res : ?YoutubeResponse = await youtubeTitle(id);
+  const res: ?YoutubeResponse = await youtubeTitle(id);
   if (!res) return undefined;
 
   const nobotOverride = antiNobot(res);

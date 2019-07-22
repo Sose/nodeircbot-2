@@ -11,11 +11,11 @@ const bot = new IRC.Client();
 const log = require('./util/logging').log;
 
 // TODO: separate file?
-const weatherPlugin : Plugin = require('./plugins/weather');
-const titlePlugin : Plugin = require('./plugins/httptitle/httptitle');
-const waPlugin : Plugin = require('./plugins/wolframalpha');
+const weatherPlugin: Plugin = require('./plugins/weather');
+const titlePlugin: Plugin = require('./plugins/httptitle/httptitle');
+const waPlugin: Plugin = require('./plugins/wolframalpha');
 
-const plugins : Array<Plugin> = [
+const plugins: Array<Plugin> = [
   weatherPlugin,
   titlePlugin,
   waPlugin,

@@ -26,7 +26,7 @@ function testAll(tests: Array<TestCase>): void {
   tests.forEach(testOne);
 }
 
-const tests : Array<TestCase> = [
+const tests: Array<TestCase> = [
   {
     description: 'It works for youtube titles',
     msg: 'asdasd https://www.youtube.com/watch?v=P73REgj-3UE https://youtu.be/XKs5mkEpWuU https://www.youtube.com/watch?v=GOJUNJ1o394',
